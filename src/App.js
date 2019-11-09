@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { EmailForm } from "./EmailForm";
+import { DetailsForm } from "./DetailsForm";
+import { Layout } from "./components/Layout/Layout";
 
-function App() {
+export const App = ({ fetchEvent, submitDetails }) => {
+  const [email, setEmail] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      {email === undefined ? (
+        <EmailForm onSubmit={email => setEmail(email)} />
+      ) : (
+        <DetailsForm email={email} onSubmit={submitDetails} />
+      )}
+    </Layout>
   );
-}
+};
 
 export default App;
