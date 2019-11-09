@@ -5,9 +5,7 @@ import { useFormik } from "formik";
 import { Trans } from "@lingui/macro";
 import { Button } from "./components/Button/Button";
 import { Input } from "./components/Input/Input";
-import { AnimatedForm } from "./components/AnimatedForm/AnimatedForm";
 import { Flipper, Flipped } from "react-flip-toolkit";
-import { Paper } from "@material-ui/core";
 import { useInteractor } from "./hooks/useInteractor";
 import { Logo } from "./components/Logo/Logo";
 
@@ -69,7 +67,6 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
               )}
             </div>
           </Flipped>
-
           <Flipped flipId="button">
             <Button type="submit" disabled={isAuthenticating}>
               RSVP
