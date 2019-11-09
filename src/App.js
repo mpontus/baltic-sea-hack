@@ -58,9 +58,9 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
                   <MaskedInput
                     name="phone"
                     required
-                    mask="+1 (999) 999-99-99"
+                    mask="+7 (999) 999-99-99"
                     onChange={formik.handleChange}
-                    pattern="\+1 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                    pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
                     value={formik.values.phone}
                     label={<Trans>Phone Number</Trans>}
                   />
