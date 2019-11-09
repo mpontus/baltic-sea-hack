@@ -16,5 +16,15 @@ export const theme = createMuiTheme({
     secondary: {
       main: "#fd3347"
     }
+  },
+  overrides: {
+    MuiFormLabel: {
+      root: {
+        color: "#fff",
+        "&$focused": {
+          color: "#fff"
+        }
+      }
+    }
   }
 });

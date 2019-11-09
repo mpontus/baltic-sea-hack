@@ -6,7 +6,7 @@ export const Input = ({ label, ...rest }) => (
     fullWidth
     variant="filled"
     margin="normal"
-    {...rest}
     label={label}
+    {...rest}
   />
 );
