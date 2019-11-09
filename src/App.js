@@ -8,9 +8,10 @@ import { Input } from "./components/Input/Input";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import { useInteractor } from "./hooks/useInteractor";
 import { Logo } from "./components/Logo/Logo";
+import { MaskedInput } from "./components/MaskedInput/MaskedInput";
 
 export const App = ({ fetchEvent, authenticate, submitDetails }) => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("asd@asd.asd");
   const [isAuthenticating, handleAuthenticate] = useInteractor(authenticate);
   const formik = useFormik({
     initialValues: {
@@ -54,10 +55,13 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
                     value={formik.values.name}
                     label={<Trans>Full Name</Trans>}
                   />
-                  <Input
+                  <MaskedInput
                     name="phone"
                     required
+                    mask="+1 (999) 999-99-99"
                     onChange={formik.handleChange}
+                    pattern="\+1 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                    required
                     value={formik.values.phone}
                     label={<Trans>Phone Number</Trans>}
                   />
