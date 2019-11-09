@@ -81,7 +81,7 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
               disabled={isAuthenticating}
               isLoading={isAuthenticating}
             >
-              RSVP
+              <Trans>RSVP</Trans>
             </Button>
           </Flipped>
         </form>
