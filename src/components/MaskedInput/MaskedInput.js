@@ -1,21 +1,6 @@
-import React, { forwardRef, useCallback } from "react";
+import React from "react";
 import InputMask from "react-input-mask";
-import {
-  FormControl,
-  InputLabel,
-  Input,
-  TextField,
-  FilledInput
-} from "@material-ui/core";
-
-/**
- * Proxy component used to translate awkward InputMask's ref prop to a natural
- * input ref prop
- */
-const InputMaskProxy = forwardRef((props, proxyRef) => {
-  const refCallback = useCallback(el => (proxyRef.current = el), [proxyRef]);
-  return <InputMask {...props} inputRef={refCallback} />;
-});
+import { FormControl, InputLabel, FilledInput } from "@material-ui/core";
 
 /**
  * Input component for masked input

@@ -7,6 +7,7 @@
     "@lingui/macro": "^2.8.3",
     "@lingui/react": "^2.8.3",
     "@material-ui/core": "^4.6.0",
+    "babel-core": "^7.0.0-bridge.0",
     "formik": "^2.0.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -17,9 +18,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "linui compile && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "add-locale": "lingui add-locale",
+    "extract": "lingui extract",
+    "compile": "lingui compile"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.7.2",
     "autoprefixer": "^9.7.1",
     "postcss-cli": "^6.1.3"
   }

@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { I18nProvider } from "@lingui/react";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { theme } from "./theme";
 import { ThemeProvider } from "@material-ui/styles";
+import { messages } from "./locales/messages";
 
 const delay = n => new Promise(resolve => setTimeout(resolve, n));
 
@@ -24,13 +26,15 @@ const submitDetails = data =>
   });
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <App
-      fetchEvent={fetchEvent}
-      authenticate={authenticate}
-      submitDetails={submitDetails}
-    />
-  </ThemeProvider>,
+  <I18nProvider catalogs={messages} language="ru">
+    <ThemeProvider theme={theme}>
+      <App
+        fetchEvent={fetchEvent}
+        authenticate={authenticate}
+        submitDetails={submitDetails}
+      />
+    </ThemeProvider>
+  </I18nProvider>,
   document.getElementById("root")
 );
 
