@@ -76,7 +76,11 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
             </div>
           </Flipped>
           <Flipped flipId="button">
-            <Button type="submit" disabled={isAuthenticating}>
+            <Button
+              type="submit"
+              disabled={isAuthenticating}
+              isLoading={isAuthenticating}
+            >
               RSVP
             </Button>
           </Flipped>

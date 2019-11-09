@@ -16,7 +16,7 @@ const fetchEvent = id =>
   });
 
 const authenticate = async (eventId, email) => {
-  await delay(2000);
+  await delay(20000);
   return {};
 };
 
