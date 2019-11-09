@@ -10,7 +10,9 @@ export const authenticate = async (eventId, email) => {
   return {};
 };
 
-export const submitDetails = data =>
-  Promise.resolve({
-    location: "http://yandex.ru"
-  });
+export const submitDetails = async (eventId, data) => {
+  await delay(2000);
+  return {
+    redirectUrl: "http://yandex.ru"
+  };
+};
