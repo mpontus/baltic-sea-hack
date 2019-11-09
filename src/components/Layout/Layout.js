@@ -4,9 +4,6 @@ import { Paper, Typography } from "@material-ui/core";
 
 export const Layout = ({ title = null, children }) => (
   <div className={layout}>
-    <Paper className={container}>
-      <Typography variant="h5">Baltic Sea Hack</Typography>
-      <main>{children}</main>
-    </Paper>
+    <main>{children}</main>
   </div>
 );
