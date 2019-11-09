@@ -10,7 +10,12 @@ import { useInteractor } from "./hooks/useInteractor";
 import { Logo } from "./components/Logo/Logo";
 import { MaskedInput } from "./components/MaskedInput/MaskedInput";
 
-export const App = ({ fetchEvent, authenticate, submitDetails }) => {
+export const CheckIn = ({
+  eventId,
+  fetchEvent,
+  authenticate,
+  submitDetails
+}) => {
   const [email, setEmail] = useState();
   const [isAuthenticating, handleAuthenticate] = useInteractor(authenticate);
   const formik = useFormik({
@@ -21,8 +26,12 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
       city: ""
     },
     onSubmit: async values => {
-      await handleAuthenticate();
-      setEmail(values.email);
+      if (!email) {
+        await handleAuthenticate();
+        setEmail(values.email);
+      } else {
+        await submitDetails(eventId, values);
+      }
     }
   });
 
@@ -90,4 +99,4 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
   );
 };
 
-export default App;
+export default CheckIn;
