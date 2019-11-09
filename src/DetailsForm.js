@@ -16,7 +16,6 @@ export const DetailsForm = ({ email, onSubmit }) => {
     email,
     onSubmit
   ]);
-
   return (
     <form onSubmit={handleSubmit}>
       <Input
