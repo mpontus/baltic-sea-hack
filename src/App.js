@@ -38,6 +38,8 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
                 autoFocus
                 name="email"
                 label="Email"
+                type="email"
+                required
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 disabled={email !== undefined}
@@ -47,18 +49,21 @@ export const App = ({ fetchEvent, authenticate, submitDetails }) => {
                   <Input
                     autoFocus
                     name="name"
+                    required
                     onChange={formik.handleChange}
                     value={formik.values.name}
                     label={<Trans>Full Name</Trans>}
                   />
                   <Input
                     name="phone"
+                    required
                     onChange={formik.handleChange}
                     value={formik.values.phone}
                     label={<Trans>Phone Number</Trans>}
                   />
                   <Input
                     name="city"
+                    required
                     onChange={formik.handleChange}
                     value={formik.values.city}
                     label={<Trans>City</Trans>}
