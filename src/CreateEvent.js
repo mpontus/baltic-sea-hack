@@ -9,6 +9,7 @@ import { FullPageTransition } from "./components/FullPageTransition/FullPageTran
 import Dropzone from "react-dropzone";
 import QRCode from "qrcode-react";
 import { ImageUpload } from "./components/ImageUpload/ImageUpload";
+import { Typography } from "@material-ui/core";
 
 export const CreateEvent = ({ createEvent }) => {
   const [isSubmitting, handleSubmit] = useInteractor(createEvent);
@@ -20,8 +21,8 @@ export const CreateEvent = ({ createEvent }) => {
       phone: "",
       city: ""
     },
-    onSubmit: async data => {
-      const result = await handleSubmit(data);
+    onSubmit: async ({ name, redirectUrl }) => {
+      const result = await handleSubmit({ name, redirectUrl });
       setResult(result);
     }
   });
@@ -31,12 +32,31 @@ export const CreateEvent = ({ createEvent }) => {
   );
 
   return (
-    <Layout style={{ textAlign: "center" }}>
+    <Layout>
       <FullPageTransition
         open={result !== undefined}
         to={
           <Layout>
-            <QRCode value={checkoutUrl} size={420} />
+            <Typography variant="h3" gutterBottom>
+              <Trans>QR-код вашего мероприятия</Trans>
+            </Typography>
+            <div style={{ marginBottom: "30px" }}>
+              <Typography gutterBottom>
+                <Trans>
+                  Для того чтобы участники отметились на вашем мероприятии,
+                  покажите им этот QR-код.
+                </Trans>
+              </Typography>
+              <Typography>
+                <Trans>
+                  После сканирования данные участники попадут в вашу базу данных
+                  и перейдут по URL которую вы указали раньше.
+                </Trans>
+              </Typography>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <QRCode value={checkoutUrl} size={420} />
+            </div>
           </Layout>
         }
       >
