@@ -14,6 +14,7 @@ import { MaskedInput } from "./components/MaskedInput/MaskedInput";
 
 export const CreateEvent = ({ createEvent }) => {
   const [isSubmitting, handleSubmit] = useInteractor(createEvent);
+  const [file, setFile] = useState();
   const [result, setResult] = useState();
   const formik = useFormik({
     initialValues: {
@@ -65,9 +66,12 @@ export const CreateEvent = ({ createEvent }) => {
           <Trans>Добавление нового мероприятия</Trans>
         </Typography>
         <form onSubmit={formik.handleSubmit}>
-          <ImageUpload />
+          <ImageUpload
+            label={<Trans>Нажмите здесь чтобы загрузить логотип</Trans>}
+            onDrop={setFile}
+          />
           <Input
-            autoFocus
+            autoFocus={file !== undefined}
             gutterBottom
             name="orgName"
             label={<Trans>Имя организации</Trans>}
@@ -85,7 +89,6 @@ export const CreateEvent = ({ createEvent }) => {
             label={<Trans>Номер телефона</Trans>}
           />
           <Input
-            autoFocus
             name="ceo"
             label={<Trans>Имя генерального директора</Trans>}
             required
@@ -93,7 +96,6 @@ export const CreateEvent = ({ createEvent }) => {
             value={formik.values.ceo}
           />
           <Input
-            autoFocus
             name="name"
             label={<Trans>Название мероприятия</Trans>}
             required
@@ -101,7 +103,6 @@ export const CreateEvent = ({ createEvent }) => {
             value={formik.values.name}
           />
           <Input
-            autoFocus
             name="redirectUrl"
             label={<Trans>Ссылка на страницу мероприятия</Trans>}
             required
@@ -109,7 +110,6 @@ export const CreateEvent = ({ createEvent }) => {
             value={formik.values.redirectUrl}
           />
           <Input
-            autoFocus
             name="address"
             label={<Trans>Место проведения</Trans>}
             required
@@ -117,14 +117,13 @@ export const CreateEvent = ({ createEvent }) => {
             value={formik.values.address}
           />
           <Input
-            autoFocus
             multiline
             rows={2}
             name="description"
             label={<Trans>Описание события</Trans>}
             required
             onChange={formik.handleChange}
-            value={formik.values.address}
+            value={formik.values.description}
           />
           <Button
             type="submit"

@@ -28,7 +28,7 @@ const toBase64 = file =>
     reader.onerror = error => reject(error);
   });
 
-export const ImageUpload = ({ onDrop }) => {
+export const ImageUpload = ({ label, onDrop }) => {
   const [src, setSrc] = useState();
   const handleDrop = useCallback(
     async ([file]) => {
@@ -52,9 +52,7 @@ export const ImageUpload = ({ onDrop }) => {
   ) : (
     <Container {...getRootProps()}>
       <input {...getInputProps()} />
-      <Typography variant="button">
-        <Trans>Select Image File</Trans>
-      </Typography>
+      <Typography variant="button">{label}</Typography>
     </Container>
   );
 };
