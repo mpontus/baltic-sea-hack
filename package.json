@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn lingui compile && yarn react-scripts build && mv build/index.html build/404.html && mv build/* landing/",
+    "build": "yarn lingui compile && yarn react-scripts build && mv build/index.html build/404.html && cp -R landing/* build/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "add-locale": "lingui add-locale",
