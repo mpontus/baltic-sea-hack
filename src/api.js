@@ -18,3 +18,5 @@ export const authenticate = async (eventId, email) => {
 
 export const submitDetails = (eventId, details) =>
   axios.post(`/api/event/checkIn/${eventId}`, details);
+
+export const createEvent = async data => axios.post(`/api/event/add`, data);

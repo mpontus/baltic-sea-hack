@@ -8,26 +8,28 @@ import { theme } from "./theme";
 import { ThemeProvider } from "@material-ui/styles";
 import { messages } from "./locales/messages";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { fetchEvent, authenticate, submitDetails } from "./api";
+import { fetchEvent, authenticate, submitDetails, createEvent } from "./stub";
+import { CreateEvent } from "./CreateEvent";
 
 ReactDOM.render(
   <I18nProvider catalogs={messages} language="ru">
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/check-in/:id">
-            {({ match }) => (
-              <CheckIn
-                eventId={match.params.id}
-                fetchEvent={fetchEvent}
-                authenticate={authenticate}
-                submitDetails={submitDetails}
-              />
-            )}
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/create">
+          {() => <CreateEvent createEvent={createEvent} />}
+        </Route>
+        <Route path="/check-in/:id">
+          {({ match }) => (
+            <CheckIn
+              eventId={match.params.id}
+              fetchEvent={fetchEvent}
+              authenticate={authenticate}
+              submitDetails={submitDetails}
+            />
+          )}
+        </Route>
+      </Switch>
+    </BrowserRouter>
   </I18nProvider>,
   document.getElementById("root")
 );

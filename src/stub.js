@@ -16,3 +16,11 @@ export const submitDetails = async (eventId, data) => {
     redirectUrl: "http://yandex.ru"
   };
 };
+
+export const createEvent = async data => {
+  await delay(1000);
+
+  return {
+    id: "123123"
+  };
+};

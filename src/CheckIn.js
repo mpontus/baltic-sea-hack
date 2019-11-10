@@ -11,6 +11,8 @@ import { Logo } from "./components/Logo/Logo";
 import { MaskedInput } from "./components/MaskedInput/MaskedInput";
 import { SuccessLottie } from "./components/SuccessLottie/SuccessLottie";
 import { FullPageTransition } from "./components/FullPageTransition/FullPageTransition";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./theme";
 
 export const CheckIn = ({
   eventId,
@@ -26,7 +28,6 @@ export const CheckIn = ({
     isAuthenticating,
     isSubmitting
   ]);
-  console.log({ eventId });
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -50,77 +51,79 @@ export const CheckIn = ({
   }, [result]);
 
   return (
-    <Flipper flipKey={email}>
-      <div style={{ backgroundColor: "#092d50" }}>
-        <Layout style={{ textAlign: "center" }}>
-          <FullPageTransition
-            open={result !== undefined}
-            to={
-              <Layout>
-                <SuccessLottie />
-              </Layout>
-            }
-          >
-            <Flipped flipId="logo">
-              <Logo style={{ marginBottom: "30px" }} />
-            </Flipped>
-            <form onSubmit={formik.handleSubmit}>
-              <Flipped flipId="form">
-                <div>
-                  <Input
-                    autoFocus
-                    name="email"
-                    label={<Trans>Email</Trans>}
-                    type="email"
-                    required
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    disabled={email !== undefined}
-                  />
-                  {email && (
-                    <React.Fragment>
-                      <Input
-                        autoFocus
-                        name="name"
-                        required
-                        onChange={formik.handleChange}
-                        value={formik.values.name}
-                        label={<Trans>Full Name</Trans>}
-                      />
-                      <MaskedInput
-                        name="phone"
-                        required
-                        mask="+7 (999) 999-99-99"
-                        onChange={formik.handleChange}
-                        pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-                        value={formik.values.phone}
-                        label={<Trans>Phone Number</Trans>}
-                      />
-                      <Input
-                        name="city"
-                        required
-                        onChange={formik.handleChange}
-                        value={formik.values.city}
-                        label={<Trans>City</Trans>}
-                      />
-                    </React.Fragment>
-                  )}
-                </div>
+    <ThemeProvider theme={theme}>
+      <Flipper flipKey={email}>
+        <div style={{ backgroundColor: "#092d50" }}>
+          <Layout style={{ textAlign: "center" }}>
+            <FullPageTransition
+              open={result !== undefined}
+              to={
+                <Layout>
+                  <SuccessLottie />
+                </Layout>
+              }
+            >
+              <Flipped flipId="logo">
+                <Logo style={{ marginBottom: "30px" }} />
               </Flipped>
-              <Flipped flipId="button">
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  isLoading={isLoading}
-                >
-                  <Trans>RSVP</Trans>
-                </Button>
-              </Flipped>
-            </form>
-          </FullPageTransition>
-        </Layout>
-      </div>
-    </Flipper>
+              <form onSubmit={formik.handleSubmit}>
+                <Flipped flipId="form">
+                  <div>
+                    <Input
+                      autoFocus
+                      name="email"
+                      label={<Trans>Email</Trans>}
+                      type="email"
+                      required
+                      onChange={formik.handleChange}
+                      value={formik.values.email}
+                      disabled={email !== undefined}
+                    />
+                    {email && (
+                      <React.Fragment>
+                        <Input
+                          autoFocus
+                          name="name"
+                          required
+                          onChange={formik.handleChange}
+                          value={formik.values.name}
+                          label={<Trans>Full Name</Trans>}
+                        />
+                        <MaskedInput
+                          name="phone"
+                          required
+                          mask="+7 (999) 999-99-99"
+                          onChange={formik.handleChange}
+                          pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                          value={formik.values.phone}
+                          label={<Trans>Phone Number</Trans>}
+                        />
+                        <Input
+                          name="city"
+                          required
+                          onChange={formik.handleChange}
+                          value={formik.values.city}
+                          label={<Trans>City</Trans>}
+                        />
+                      </React.Fragment>
+                    )}
+                  </div>
+                </Flipped>
+                <Flipped flipId="button">
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    isLoading={isLoading}
+                  >
+                    <Trans>RSVP</Trans>
+                  </Button>
+                </Flipped>
+              </form>
+            </FullPageTransition>
+          </Layout>
+        </div>
+      </Flipper>
+    </ThemeProvider>
   );
 };
 
