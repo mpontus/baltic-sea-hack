@@ -90,7 +90,7 @@ export const CreateEvent = ({ createEvent }) => {
           />
           <Input
             name="ceo"
-            label={<Trans>Имя генерального директора</Trans>}
+            label={<Trans>ФИО генерального директора</Trans>}
             required
             onChange={formik.handleChange}
             value={formik.values.ceo}
