@@ -13,7 +13,7 @@ export const authenticate = async (eventId, email) => {
 export const submitDetails = async (eventId, data) => {
   await delay(2000);
   return {
-    redirectUrl: "http://yandex.ru"
+    redirectUrl: "https://t.me/balticseahack"
   };
 };
 

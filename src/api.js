@@ -16,8 +16,9 @@ export const authenticate = async (eventId, email) => {
   return {};
 };
 
-export const submitDetails = (eventId, details) =>
-  axios.post(`/api/event/checkIn/${eventId}`, details);
+export const submitDetails = (eventId, details) => {
+  return axios.post(`/api/event/checkIn/${eventId}`, details);
+};
 
 export const createEvent = async ({ name, redirectUrl }) => {
   const id = Math.floor(Math.random() * 1e9);

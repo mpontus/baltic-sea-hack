@@ -41,7 +41,7 @@ export const CheckIn = ({
         setEmail(values.email);
       } else {
         const result = await handleSubmit(eventId, values);
-        // setResult(result);
+        setResult(result);
       }
     }
   });
