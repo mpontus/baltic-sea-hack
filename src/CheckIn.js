@@ -52,8 +52,8 @@ export const CheckIn = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <Flipper flipKey={email}>
-        <div style={{ backgroundColor: "#092d50" }}>
+      <div style={{ backgroundColor: "#092d50" }}>
+        <Flipper flipKey={email}>
           <Layout style={{ textAlign: "center" }}>
             <FullPageTransition
               open={result !== undefined}
@@ -121,8 +121,8 @@ export const CheckIn = ({
               </form>
             </FullPageTransition>
           </Layout>
-        </div>
-      </Flipper>
+        </Flipper>
+      </div>
     </ThemeProvider>
   );
 };

@@ -8,7 +8,7 @@ import { theme } from "./theme";
 import { ThemeProvider } from "@material-ui/styles";
 import { messages } from "./locales/messages";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { fetchEvent, authenticate, submitDetails, createEvent } from "./stub";
+import { fetchEvent, authenticate, submitDetails, createEvent } from "./api";
 import { CreateEvent } from "./CreateEvent";
 
 ReactDOM.render(

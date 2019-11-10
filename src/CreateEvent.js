@@ -40,7 +40,6 @@ export const CreateEvent = ({ createEvent }) => {
           </Layout>
         }
       >
-        <ImageUpload />
         <form onSubmit={formik.handleSubmit}>
           <Input
             autoFocus
@@ -51,13 +50,12 @@ export const CreateEvent = ({ createEvent }) => {
             value={formik.values.name}
           />
           <Input
-            multiline
-            rows={2}
-            name="desription"
-            label={<Trans>Event Description</Trans>}
+            autoFocus
+            name="redirectUrl"
+            label={<Trans>Redirect URL</Trans>}
             required
             onChange={formik.handleChange}
-            value={formik.values.description}
+            value={formik.values.redirectUrl}
           />
           <Button
             type="submit"
