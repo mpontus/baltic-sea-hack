@@ -127,7 +127,8 @@ export const CreateEvent = ({ createEvent }) => {
           />
           <Button
             type="submit"
-            isSubmitting={isSubmitting}
+            disabled={isSubmitting}
+            isLoading={isSubmitting}
             style={{ marginTop: "15px" }}
           >
             <Trans>Create Event</Trans>
