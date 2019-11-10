@@ -12,6 +12,7 @@ const Container = styled.div`
   max-width: 600px;
   width: 100%;
   cursor: pointer;
+  text-align: center;
 `;
 
 const Preview = styled.img`

@@ -10,6 +10,7 @@ import Dropzone from "react-dropzone";
 import QRCode from "qrcode-react";
 import { ImageUpload } from "./components/ImageUpload/ImageUpload";
 import { Typography } from "@material-ui/core";
+import { MaskedInput } from "./components/MaskedInput/MaskedInput";
 
 export const CreateEvent = ({ createEvent }) => {
   const [isSubmitting, handleSubmit] = useInteractor(createEvent);
@@ -60,11 +61,41 @@ export const CreateEvent = ({ createEvent }) => {
           </Layout>
         }
       >
+        <Typography variant="h3" gutterBottom>
+          <Trans>Добавление нового мероприятия</Trans>
+        </Typography>
         <form onSubmit={formik.handleSubmit}>
+          <ImageUpload />
+          <Input
+            autoFocus
+            gutterBottom
+            name="orgName"
+            label={<Trans>Имя организации</Trans>}
+            required
+            onChange={formik.handleChange}
+            value={formik.values.orgName}
+          />
+          <MaskedInput
+            name="phone"
+            required
+            mask="+7 (999) 999-99-99"
+            onChange={formik.handleChange}
+            pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+            value={formik.values.phone}
+            label={<Trans>Номер телефона</Trans>}
+          />
+          <Input
+            autoFocus
+            name="ceo"
+            label={<Trans>Имя генерального директора</Trans>}
+            required
+            onChange={formik.handleChange}
+            value={formik.values.ceo}
+          />
           <Input
             autoFocus
             name="name"
-            label={<Trans>Event Name</Trans>}
+            label={<Trans>Название мероприятия</Trans>}
             required
             onChange={formik.handleChange}
             value={formik.values.name}
@@ -72,10 +103,28 @@ export const CreateEvent = ({ createEvent }) => {
           <Input
             autoFocus
             name="redirectUrl"
-            label={<Trans>Redirect URL</Trans>}
+            label={<Trans>Ссылка на страницу мероприятия</Trans>}
             required
             onChange={formik.handleChange}
             value={formik.values.redirectUrl}
+          />
+          <Input
+            autoFocus
+            name="address"
+            label={<Trans>Место проведения</Trans>}
+            required
+            onChange={formik.handleChange}
+            value={formik.values.address}
+          />
+          <Input
+            autoFocus
+            multiline
+            rows={2}
+            name="description"
+            label={<Trans>Описание события</Trans>}
+            required
+            onChange={formik.handleChange}
+            value={formik.values.address}
           />
           <Button
             type="submit"
